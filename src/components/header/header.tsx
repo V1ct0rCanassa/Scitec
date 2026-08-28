@@ -50,7 +50,7 @@ function Header() {
   ]
 
   return (
-    <header className="bg-roxo-escuro">
+    <header className="relative z-50 bg-roxo-escuro ">
       <div className="max-w-6xl mx-auto px-2 flex items-center justify-between">
         {/* Logo */}
         <a href="#" className="shrink-0">
