@@ -21,7 +21,7 @@ function AboutUs() {
       <div className="max-w-7xl mx-auto grid md:grid-cols-[0.85fr_1.15fr] items-stretch">
         {/* Coluna esquerda — imagem */}
         <div className="relative flex items-center justify-center px-4 md:px-0 md:pr-10 py-24 order-2 md:order-1">
-          <div className="relative w-full max-w-2xl aspect-[3/2]">
+          <div className="relative w-full max-w-2xl aspect-3/2">
             {/* Fundo em grade de pontos, sutil, tema "circuito" */}
             <div
               aria-hidden="true"
@@ -40,7 +40,7 @@ function AboutUs() {
               <span className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-verde/70" />
               <span className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-verde/70" />
 
-              <div className="group w-full h-full border border-roxo-escuro/15 hover:border-verde/60 shadow-[0_25px_50px_-20px_rgba(46,26,71,0.35)] hover:shadow-[0_35px_60px_-15px_rgba(46,26,71,0.5)] overflow-hidden transition-all duration-300 ease-out -translate-y-0 hover:-translate-y-2">
+              <div className="group w-full h-full border border-roxo-escuro/15 hover:border-verde/60 shadow-[0_25px_50px_-20px_rgba(46,26,71,0.35)] hover:shadow-[0_35px_60px_-15px_rgba(46,26,71,0.5)] overflow-hidden transition-all duration-300 ease-out translate-y-0 hover:-translate-y-2">
                 <img
                   src="/src/assets/about.jpeg"
                   alt="descrição"

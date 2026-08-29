@@ -15,7 +15,7 @@ function Hero() {
             <span className="text-verde">produção</span>
             <span
               aria-hidden="true"
-              className="inline-block w-[3px] h-[0.85em] bg-verde ml-1 align-middle motion-safe:animate-pulse"
+              className="inline-block w-0.75 h-[0.85em] bg-verde ml-1 align-middle motion-safe:animate-pulse"
             />
           </h1>
 
@@ -46,7 +46,7 @@ function Hero() {
         </div>
 
         {/* Coluna direita — espaço reservado pra imagem */}
-        <div className="relative flex items-center justify-center px-2 py-24 min-h-[380px] md:min-h-0 border-t md:border-t-0 md:border-l border-off-white/1">
+        <div className="relative flex items-center justify-center px-2 py-24 min-h-95 md:min-h-0 border-t md:border-t-0 md:border-l border-off-white/1">
           <div className="relative w-full max-w-full aspect-square">
             {/* Fundo em grade de pontos, sutil, tema "circuito" */}
             <div
