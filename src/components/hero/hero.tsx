@@ -27,7 +27,7 @@ function Hero() {
             <span className="text-verde">produção</span>
             <span
               aria-hidden="true"
-              className="inline-block w-[3px] h-[0.85em] bg-verde ml-1 align-middle motion-safe:animate-pulse"
+              className="inline-block w-0.75 h-[0.85em] bg-verde ml-1 align-middle motion-safe:animate-pulse"
             />
           </h1>
 
@@ -69,13 +69,13 @@ function Hero() {
 
         {/* Coluna direita — espaço reservado pra imagem */}
         <div
-          className={`relative flex items-center justify-center px-2 py-24 min-h-[380px] md:min-h-0 border-t md:border-t-0 md:border-l border-off-white/10
+          className={`relative flex items-center justify-center px-2 py-24 min-h-[380px] md:min-h-0 border-t md:border-t-0
                      transition-all duration-1000 ease-out
                      ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
           style={{ transitionDelay: mounted ? '200ms' : '0ms' }}
         >
           <div className="relative w-full max-w-full aspect-square">
-            {/* Fundo em grade de pontos, sutil, tema "circuito" */}
+            {/* Fundo em grade de pontos */}
             <div
               aria-hidden="true"
               className="absolute inset-0 opacity-[0.15]"
@@ -86,17 +86,42 @@ function Hero() {
                 color: '#FDFCFA',
               }}
             />
-            <div className="absolute inset-6 flex items-center justify-center">
-              {/* Marcas de canto, estilo mira/enquadramento */}
-              <span className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-verde/70" />
-              <span className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-verde/70" />
-              <span className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-verde/70" />
-              <span className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-verde/70" />
-              <img
-                src="/src/assets/logo/pose1.png"
-                alt="descrição"
-                className="max-w-[80%] max-h-[80%] w-auto h-auto object-contain"
-              />
+
+            {/* Wrapper com Perspectiva 3D */}
+            <div className="absolute inset-6 group [perspective:1000px]">
+
+              {/* Marcas de canto estáticas */}
+              <span className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-verde/70 z-20 pointer-events-none" />
+              <span className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-verde/70 z-20 pointer-events-none" />
+              <span className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-verde/70 z-20 pointer-events-none" />
+              <span className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-verde/70 z-20 pointer-events-none" />
+
+              {/* Frente (Pose 1) - Começa em 0deg e vai para 180deg no hover */}
+              <div
+                className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-in-out
+                           [backface-visibility:hidden] [-webkit-backface-visibility:hidden]
+                           [transform:rotateY(0deg)] group-hover:[transform:rotateY(180deg)]"
+              >
+                <img
+                  src="/src/assets/logo/pose1.png"
+                  alt="Pose 1"
+                  className="max-w-[80%] max-h-[80%] w-auto h-auto object-contain"
+                />
+              </div>
+
+              {/* Verso (Pose 2) - Começa em -180deg e vem para 0deg no hover */}
+              <div
+                className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-in-out
+                           [backface-visibility:hidden] [-webkit-backface-visibility:hidden]
+                           [transform:rotateY(-180deg)] group-hover:[transform:rotateY(0deg)]"
+              >
+                <img
+                  src="/src/assets/logo/pose2.png"
+                  alt="Pose 2"
+                  className="max-w-[80%] max-h-[80%] w-auto h-auto object-contain"
+                />
+              </div>
+
             </div>
           </div>
         </div>
