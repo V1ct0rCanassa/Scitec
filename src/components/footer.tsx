@@ -1,4 +1,5 @@
-import { Instagram, Linkedin, Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
+import { Linkedin, Instagram } from './icons/socialIcons'
 
 function Footer() {
   const links = [
@@ -12,7 +13,7 @@ function Footer() {
   return (
     <footer className="bg-roxo-escuro border-t border-off-white/10 pt-16 pb-6 font-texto text-off-white/80">
       <div className="max-w-6xl mx-auto px-2 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
-        
+
         {/* Coluna 1: Marca e Resumo */}
         <div className="flex flex-col gap-4">
           <a href="#inicio" className="shrink-0 w-max">
@@ -46,10 +47,10 @@ function Footer() {
         {/* Coluna 3: Contato e Redes Sociais */}
         <div className="flex flex-col gap-4">
           <h3 className="text-off-white font-medium text-lg">Contato</h3>
-          
+
           <div className="flex flex-col gap-3 text-sm">
-            <a 
-              href="mailto:contato@suaempresa.com" 
+            <a
+              href="mailto:contato@suaempresa.com"
               className="flex items-center gap-2 hover:text-verde transition-colors duration-200 w-max"
             >
               <Mail size={18} />
@@ -62,16 +63,16 @@ function Footer() {
           </div>
 
           <div className="flex items-center gap-5 mt-3">
-            <a 
-              href="#" 
-              className="hover:text-verde transition-transform hover:-translate-y-1 duration-200" 
+            <a
+              href="#"
+              className="hover:text-verde transition-transform hover:-translate-y-1 duration-200"
               aria-label="LinkedIn"
             >
               <Linkedin size={22} />
             </a>
-            <a 
-              href="#" 
-              className="hover:text-verde transition-transform hover:-translate-y-1 duration-200" 
+            <a
+              href="#"
+              className="hover:text-verde transition-transform hover:-translate-y-1 duration-200"
               aria-label="Instagram"
             >
               <Instagram size={22} />

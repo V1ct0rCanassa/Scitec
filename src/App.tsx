@@ -1,6 +1,8 @@
 import Header from "./components/header/header"
 import Hero from "./components/hero/hero"
 import AboutUs from "./components/about/about"
+import Footer from "./components/footer"
+import TrustedBy from "./components/trusted/trustedby"
 
 function App() {
 
@@ -8,7 +10,9 @@ function App() {
     <>
       <Header />
       <Hero />
-      <AboutUs/>
+      <AboutUs />
+      <TrustedBy/>
+      <Footer/>
     </>
   )
 }

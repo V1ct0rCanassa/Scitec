@@ -1,6 +1,28 @@
+import { useEffect, useRef, useState } from 'react'
 import { GraduationCap, Handshake, Target } from 'lucide-react'
 
 function AboutUs() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const node = sectionRef.current
+    if (!node) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.unobserve(node)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
+
   const valores = [
     {
       nome: 'Aprendizado contínuo',
@@ -17,10 +39,18 @@ function AboutUs() {
   ]
 
   return (
-    <section id="quem-somos" className="relative bg-off-white overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="quem-somos"
+      className="relative bg-off-white overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto grid md:grid-cols-[0.85fr_1.15fr] items-stretch">
-        {/* Coluna esquerda — imagem */}
-        <div className="relative flex items-center justify-center px-4 md:px-0 md:pr-10 py-24 order-2 md:order-1">
+        {/* Coluna esquerda — imagem (entra vindo da esquerda) */}
+        <div
+          className={`relative flex items-center justify-center px-4 md:px-0 md:pr-10 py-24 order-2 md:order-1
+                     transition-all duration-700 ease-out
+                     ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'}`}
+        >
           <div className="relative w-full max-w-2xl aspect-[3/2]">
             {/* Fundo em grade de pontos, sutil, tema "circuito" */}
             <div
@@ -40,7 +70,7 @@ function AboutUs() {
               <span className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-verde/70" />
               <span className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-verde/70" />
 
-              <div className="group w-full h-full border border-roxo-escuro/15 hover:border-verde/60 shadow-[0_25px_50px_-20px_rgba(46,26,71,0.35)] hover:shadow-[0_35px_60px_-15px_rgba(46,26,71,0.5)] overflow-hidden transition-all duration-300 ease-out -translate-y-0 hover:-translate-y-2">
+              <div className="group w-full h-full shadow-[0_25px_50px_-20px_rgba(46,26,71,0.35)] hover:shadow-[0_35px_60px_-15px_rgba(46,26,71,0.5)] overflow-hidden transition-all duration-300 ease-out -translate-y-0 hover:-translate-y-2">
                 <img
                   src="/src/assets/about.jpeg"
                   alt="descrição"
@@ -51,8 +81,13 @@ function AboutUs() {
           </div>
         </div>
 
-        {/* Coluna direita — copy */}
-        <div className="flex flex-col justify-center px-4 md:px-0 md:pl-10 py-24 order-1 md:order-2">
+        {/* Coluna direita — copy (entra vindo da direita) */}
+        <div
+          className={`flex flex-col justify-center px-4 md:px-0 md:pl-10 py-24 order-1 md:order-2
+                     transition-all duration-700 ease-out
+                     ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-16'}`}
+          style={{ transitionDelay: visible ? '120ms' : '0ms' }}
+        >
           <h2 className="max-w-full font-texto font-semibold text-roxo-escuro text-4xl sm:text-5xl leading-[1.08] tracking-tight whitespace-nowrap">
             Quem é a <span className="text-verde">SciTec</span>?
           </h2>
