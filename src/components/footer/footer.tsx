@@ -33,7 +33,7 @@ function Footer() {
           </div>
           <a
             href="#fale-conosco"
-            className="inline-flex items-center gap-2 mt-6 md:mt-0 bg-roxo-escuro text-white px-6 py-3 rounded-md font-bold hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(46,26,71,0.4)] transition-all duration-300"
+            className="inline-flex items-center gap-2 mt-6 md:mt-0 bg-roxo-escuro text-white px-6 py-3  font-bold hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(46,26,71,0.4)] transition-all duration-300"
           >
             Fale com a gente
             <ArrowRight size={20} strokeWidth={2.5} />
@@ -91,7 +91,7 @@ function Footer() {
                 <div className="p-2 bg-white/10 rounded-md group-hover:bg-roxo-escuro transition-colors">
                   <Mail size={16} className="text-white group-hover:text-white transition-colors" />
                 </div>
-                contato@suaempresa.com
+                scitec@scitejr.com
               </a>
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-white/10 rounded-md">

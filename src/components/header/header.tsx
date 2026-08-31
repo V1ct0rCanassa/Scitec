@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
-import { ChevronDown, Cpu, Database, Lightbulb } from 'lucide-react'
+import { ChevronDown, Cpu, Database, Lightbulb, PenTool, Microscope } from 'lucide-react'
+import { Link } from 'react-router-dom' // <-- 1. Importação do Link adicionada
 
 function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
@@ -31,21 +32,37 @@ function Header() {
     })
   }
 
+  // 2. Propriedade 'link' adicionada a cada setor
   const setores = [
     {
       nome: 'Tecnologia e Software',
       descricao: 'Sistemas e produtos digitais',
       Icone: Cpu,
+      link: '/tecnologia',
     },
     {
       nome: 'Dados e Inteligência',
       descricao: 'Análise e IA aplicada ao negócio',
       Icone: Database,
+      link: '/dados',
     },
     {
       nome: 'Engenharia e Inovação',
       descricao: 'Soluções técnicas sob medida',
       Icone: Lightbulb,
+      link: '/engenharia',
+    },
+    {
+      nome: 'Design & Concepção',
+      descricao: 'Interfaces, UX e prototipagem',
+      Icone: PenTool,
+      link: '/design',
+    },
+    {
+      nome: 'Ciência e Consultoria',
+      descricao: 'Pesquisa avançada e estratégia',
+      Icone: Microscope,
+      link: '/ciencia',
     },
   ]
 
@@ -53,13 +70,13 @@ function Header() {
     <header className="relative z-50 bg-roxo-escuro ">
       <div className="max-w-6xl mx-auto px-2 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="shrink-0">
+        <Link to="/" className="shrink-0">
           <img
             src="/src/assets/logo/branco2.png"
             alt="Marca"
             className="h-20 w-auto"
           />
-        </a>
+        </Link>
 
         {/* Navegação central */}
         <nav className="hidden md:flex items-center gap-10 font-texto text-lg">
@@ -102,9 +119,10 @@ function Header() {
                 }`}
               >
                 {setores.map((setor, index) => (
-                  <a
+                  <Link
                     key={setor.nome}
-                    href="#"
+                    to={setor.link}
+                    onClick={() => setIsServicesOpen(false)} // Fecha o menu ao clicar
                     style={{ transitionDelay: isServicesOpen ? `${index * 40}ms` : '0ms' }}
                     className={`flex items-start gap-3 px-5 py-4 hover:bg-roxo-escuro/5 transition-all duration-200 ease-out group ${
                       isServicesOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'
@@ -123,7 +141,7 @@ function Header() {
                         {setor.descricao}
                       </p>
                     </div>
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
