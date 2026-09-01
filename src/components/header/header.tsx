@@ -81,14 +81,14 @@ function Header() {
         {/* Navegação central */}
         <nav className="hidden md:flex items-center gap-10 font-texto text-lg">
           <a
-            href="#inicio"
+            href="/"
             className="relative text-off-white/80 hover:text-off-white transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-verde after:origin-center after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:ease-out"
           >
             Início
           </a>
 
           <a
-            href="#quem-somos"
+            href="/#quem-somos"
             className="relative text-off-white/80 hover:text-off-white transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-verde after:origin-center after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:ease-out"
           >
             Quem somos
