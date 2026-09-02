@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { ChevronDown, Cpu, Database, Lightbulb, PenTool, Microscope } from 'lucide-react'
-import { Link } from 'react-router-dom' // <-- 1. Importação do Link adicionada
+import { Link } from 'react-router-dom'
 
 function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState(false)
@@ -32,7 +32,6 @@ function Header() {
     })
   }
 
-  // 2. Propriedade 'link' adicionada a cada setor
   const setores = [
     {
       nome: 'Tecnologia e Software',
@@ -80,13 +79,14 @@ function Header() {
 
         {/* Navegação central */}
         <nav className="hidden md:flex items-center gap-10 font-texto text-lg">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="relative text-off-white/80 hover:text-off-white transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-verde after:origin-center after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:ease-out"
           >
             Início
-          </a>
+          </Link>
 
+          {/* Quem somos voltou a ser tag <a> */}
           <a
             href="/#quem-somos"
             className="relative text-off-white/80 hover:text-off-white transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-verde after:origin-center after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:ease-out"
@@ -122,7 +122,7 @@ function Header() {
                   <Link
                     key={setor.nome}
                     to={setor.link}
-                    onClick={() => setIsServicesOpen(false)} // Fecha o menu ao clicar
+                    onClick={() => setIsServicesOpen(false)}
                     style={{ transitionDelay: isServicesOpen ? `${index * 40}ms` : '0ms' }}
                     className={`flex items-start gap-3 px-5 py-4 hover:bg-roxo-escuro/5 transition-all duration-200 ease-out group ${
                       isServicesOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1'
@@ -147,17 +147,17 @@ function Header() {
             )}
           </div>
 
-          <a
-            href="#portfolio"
+          <Link
+            to="/portfolio"
             className="relative text-off-white/80 hover:text-off-white transition-colors duration-200 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:bg-verde after:origin-center after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:ease-out"
           >
             Portfólio
-          </a>
+          </Link>
         </nav>
 
-        {/* CTA */}
+        {/* CTA também voltou a ser tag <a> por ser âncora */}
         <a
-          href="#fale-conosco"
+          href="/#fale-conosco"
           className="font-texto text-lg font-medium bg-verde text-off-white px-6 py-3 shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
         >
           Fale conosco

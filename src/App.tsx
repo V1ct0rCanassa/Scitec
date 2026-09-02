@@ -4,6 +4,11 @@ import Header from "./components/header/header"
 import Footer from "./components/footer/footer"
 import Home from './pages/home'
 import Engenharia from './pages/engenharia'
+import Tecnologia from './pages/tecnologia'
+import Dados from './pages/dados'
+import Design from './pages/design'
+import Ciencia from './pages/ciencia'
+import Portfolio from './pages/portfolio'
 
 function App() {
   return (
@@ -13,6 +18,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/engenharia" element={<Engenharia />} />
+        <Route path="/tecnologia" element={<Tecnologia />} />
+        <Route path="/dados" element={<Dados />} />
+        <Route path="/design" element={<Design />} />
+        <Route path="/ciencia" element={<Ciencia />} />
+        <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
 
       <Footer />

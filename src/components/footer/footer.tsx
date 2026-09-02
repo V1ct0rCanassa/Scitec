@@ -3,11 +3,11 @@ import { Linkedin, Instagram } from '../icons/socialIcons'
 
 function Footer() {
   const links = [
-    { nome: 'Início', href: '#inicio' },
-    { nome: 'Quem somos', href: '#quem-somos' },
-    { nome: 'Setores', href: '#setores' },
-    { nome: 'Portfólio', href: '#portfolio' },
-    { nome: 'Fale conosco', href: '#fale-conosco' },
+    { nome: 'Início', href: '/' },
+    { nome: 'Quem somos', href: '/#quem-somos' },
+    { nome: 'Setores', href: '/#setores' },
+    { nome: 'Portfólio', href: '/portfolio' },
+    { nome: 'Fale conosco', href: '/#fale-conosco' },
   ]
 
   return (
@@ -32,8 +32,8 @@ function Footer() {
             </p>
           </div>
           <a
-            href="#fale-conosco"
-            className="inline-flex items-center gap-2 mt-6 md:mt-0 bg-roxo-escuro text-white px-6 py-3  font-bold hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(46,26,71,0.4)] transition-all duration-300"
+            href="/#fale-conosco"
+            className="inline-flex items-center gap-2 mt-6 md:mt-0 bg-roxo-escuro text-white px-6 py-3 font-bold hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(46,26,71,0.4)] transition-all duration-300"
           >
             Fale com a gente
             <ArrowRight size={20} strokeWidth={2.5} />
@@ -45,7 +45,7 @@ function Footer() {
 
           {/* Coluna 1: Marca e Descrição */}
           <div className="md:col-span-5 lg:col-span-4 flex flex-col gap-4">
-            <a href="#inicio" className="relative group w-max p-2 inline-block">
+            <a href="/" className="relative group w-max p-2 inline-block">
               {/* Cantos estruturais em Roxo Escuro */}
               <span className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-roxo-escuro/80 transition-all duration-500 group-hover:w-full group-hover:h-full group-hover:border-roxo-escuro/30" />
               <span className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-roxo-escuro/80 transition-all duration-500 group-hover:w-full group-hover:h-full group-hover:border-roxo-escuro/30" />
