@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Quote, User } from 'lucide-react'
+import { Quote, User, ArrowRight } from 'lucide-react'
 
 function Relatos() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -54,28 +54,18 @@ function Relatos() {
     }
   ]
 
-  // TRUQUE: Duplicamos a lista para criar o loop perfeito do carrossel
-  const carroselItens = [...relatos, ...relatos, ...relatos, ...relatos]
-
   return (
     <section ref={sectionRef} className="relative py-16 md:py-24 bg-roxo-escuro font-texto overflow-hidden" id="relatos">
 
-      {/* Estilo embutido para a animação do carrossel */}
+      {/* Estilo para esconder a barra de rolagem nativa no celular */}
       <style>
         {`
-          @keyframes scroll-depoimentos {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } 
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
           }
-          .animate-marquee-slow {
-            display: flex;
-            width: max-content;
-            animation: scroll-depoimentos 160s linear infinite;
-          }
-          /* Pausa a rolagem quando o mouse entra ou quando toca na tela */
-          .animate-marquee-slow:hover, 
-          .animate-marquee-slow:active {
-            animation-play-state: paused;
+          .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
           }
         `}
       </style>
@@ -88,11 +78,10 @@ function Relatos() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
         
         <div
-          className={`flex flex-col items-center text-center mb-10 md:mb-16
+          className={`flex flex-col items-center text-center mb-6 md:mb-10
                       transition-all duration-700 ease-out
                       ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          {/* Fonte ajustada para mobile (text-3xl) e PC (text-5xl) */}
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
             Nossa história através dos <span className="text-verde">ex-membros</span>
           </h2>
@@ -100,26 +89,41 @@ function Relatos() {
             A Scitec é uma escola de talentos. Veja o impacto da experiência na empresa júnior na carreira de quem já passou por aqui.
           </p>
         </div>
+
+        {/* Indicador visual de "Deslize" (Aparece SÓ NO CELULAR/TABLET -> lg:hidden) */}
+        <div 
+          className={`flex lg:hidden justify-end transition-all duration-1000 delay-300
+                      ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
+        >
+          <span className="flex items-center gap-2 text-verde/90 text-sm font-semibold animate-pulse mb-2 mr-2">
+            Deslize para ler <ArrowRight size={16} strokeWidth={2.5} />
+          </span>
+        </div>
+
       </div>
 
-      {/* Container do Carrossel de Depoimentos (Ocupa 100% da tela) */}
+      {/* Container Principal */}
       <div
-        className={`relative w-full mt-8 overflow-hidden transition-all duration-1000 delay-200 ease-out
+        className={`relative w-full transition-all duration-1000 delay-200 ease-out
                     ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
       >
-        <div className="relative w-full flex items-stretch">
+        <div className="relative w-full lg:max-w-7xl lg:mx-auto">
           
-          {/* Máscaras de Gradiente laterais para o efeito de "sumir" nas bordas */}
-          <div className="absolute left-0 top-0 bottom-0 w-8 md:w-32 z-20 pointer-events-none bg-linear-to-r from-roxo-escuro to-transparent" />
-          <div className="absolute right-0 top-0 bottom-0 w-8 md:w-32 z-20 pointer-events-none bg-linear-to-l from-roxo-escuro to-transparent" />
+          {/* Sombras laterais (Aparecem SÓ NO CELULAR para dar efeito de carrossel infinito) */}
+          <div className="lg:hidden absolute left-0 top-0 bottom-0 w-4 z-20 pointer-events-none bg-linear-to-r from-roxo-escuro to-transparent" />
+          <div className="lg:hidden absolute right-0 top-0 bottom-0 w-16 z-20 pointer-events-none bg-linear-to-l from-roxo-escuro to-transparent" />
           
-          {/* Trilho animado que contém os cards */}
-          <div className="animate-marquee-slow gap-6 md:gap-8 px-4 md:px-8 py-4 items-stretch">
-            {carroselItens.map((relato, index) => (
+          {/* MÁGICA RESPONSIVA AQUI:
+            Mobile: flex, overflow-x-auto (carrossel)
+            PC (lg): grid, grid-cols-2 (layout 2x2 estático)
+          */}
+          <div className="flex lg:grid lg:grid-cols-2 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none gap-6 md:gap-8 px-4 lg:px-8 py-4 items-stretch hide-scrollbar scroll-smooth w-full">
+            
+            {relatos.map((relato) => (
               <div
-                key={`${relato.id}-${index}`}
-                // Largura travada: 85vw no celular (quase a tela toda) e 28rem no PC
-                className="group relative flex flex-col shrink-0 w-[85vw] sm:w-[24rem] md:w-md h-auto"
+                key={relato.id}
+                // Mobile: largura fixa (85vw) e snap-center | PC (lg): largura 100% da coluna do grid
+                className="group relative flex flex-col shrink-0 lg:shrink w-[85vw] sm:w-[24rem] lg:w-full h-auto snap-center lg:snap-align-none"
               >
                 <div
                   aria-hidden="true"
@@ -132,7 +136,7 @@ function Relatos() {
                   <span className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-verde/90" />
                   <span className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-verde/90" />
 
-                  {/* Card em si (h-full garante que todos tenham a mesma altura na linha) */}
+                  {/* Card em si */}
                   <div
                     className="relative z-10 flex flex-col h-full bg-off-white border border-verde/20 group-hover:border-verde/60
                                shadow-[0_15px_30px_-15px_rgba(0,0,0,0.5)] md:shadow-[0_25px_50px_-20px_rgba(0,0,0,0.5)] 
@@ -142,7 +146,6 @@ function Relatos() {
                     <Quote size={48} className="absolute top-4 right-4 md:top-6 md:right-6 md:w-16 md:h-16 text-roxo-escuro/5 -rotate-12 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6" />
 
                     <div className="relative z-10 mb-6 md:mb-8 grow">
-                      {/* Fonte um pouco menor no celular para caber o texto todo (text-sm) */}
                       <p className="text-gray-700 text-sm md:text-base leading-relaxed italic">
                         "{relato.texto}"
                       </p>
@@ -170,6 +173,9 @@ function Relatos() {
                 </div>
               </div>
             ))}
+            
+            {/* Espaçador invisível no final (Aparece SÓ NO CELULAR) para a margem da direita não colar */}
+            <div className="lg:hidden shrink-0 w-4 sm:w-8" />
           </div>
         </div>
       </div>
