@@ -98,7 +98,7 @@ function Header() {
         </nav>
 
         {/* Botão Fale Conosco Desktop */}
-        <Link to ="/contato" className="hidden md:inline-flex font-texto text-lg font-medium bg-verde text-off-white px-6 py-3 shadow-md hover:-translate-y-0.5 transition-all">
+        <Link to="/contato" className="hidden md:inline-flex font-texto text-lg font-medium bg-verde text-off-white px-6 py-3 shadow-md hover:-translate-y-0.5 transition-all">
           Fale conosco
         </Link>
 
@@ -150,9 +150,9 @@ function Header() {
 
             <Link to="/portfolio" className="py-3 text-off-white border-b border-white/10" onClick={closeMobileMenu}>Portfólio</Link>
 
-            <a href="/#fale-conosco" onClick={closeMobileMenu} className="mt-6 text-center font-medium bg-verde text-off-white px-6 py-3">
+            <Link to="/contato" onClick={closeMobileMenu} className="mt-6 text-center font-medium bg-verde text-off-white px-6 py-3">
               Fale conosco
-            </a>
+            </Link>
           </nav>
         </div>
       )}
