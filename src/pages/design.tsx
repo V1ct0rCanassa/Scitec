@@ -104,7 +104,7 @@ export function DesignEConcepcao() {
               {/* Container da imagem levanta sem o zoom interno */}
               <div className="relative h-full w-full bg-roxo-escuro overflow-hidden shadow-2xl transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:shadow-[0_35px_60px_-15px_rgba(0,255,150,0.25)]">
                 <img
-                  src="/public/assets/design.avif" // Lembre-se de colocar a imagem correta na sua pasta
+                  src="/assets/design.avif"
                   alt="Profissional desenhando wireframes e protótipos de interface na tela"
                   className="w-full h-full object-cover"
                 />

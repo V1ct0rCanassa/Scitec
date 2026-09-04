@@ -52,7 +52,7 @@ function Header() {
 
         {/* Logo */}
         <Link to="/" className="shrink-0" onClick={closeMobileMenu}>
-          <img src="/public/assets/logo/branco2.png" alt="Marca" className="h-20 w-auto" />
+          <img src="/assets/logo/branco2.png" alt="Marca" className="h-20 w-auto" />
         </Link>
 
         {/* --- NAVEGAÇÃO DESKTOP --- */}

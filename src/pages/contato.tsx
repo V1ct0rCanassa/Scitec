@@ -85,7 +85,7 @@ function Contato() {
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-                  src="/public/assets/logo/pose1.png"
+                  src="/assets/logo/pose1.png"
                   alt="Mascote / Logo em pose de contato"
                   className="max-w-[80%] max-h-[80%] w-auto h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 />
