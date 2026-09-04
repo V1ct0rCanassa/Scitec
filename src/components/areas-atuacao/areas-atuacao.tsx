@@ -89,37 +89,35 @@ function AreasAtuacao() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 bg-off-white font-texto"
+      className="py-16 md:py-24 bg-off-white font-texto"
       id="setores"
     >
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div
-          className={`flex flex-col items-center text-center mb-16
+          className={`flex flex-col items-center text-center mb-12 md:mb-16
                       transition-all duration-700 ease-out
                       ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-roxo-escuro mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-roxo-escuro mb-4 md:mb-6 leading-tight">
             Conheça mais nossos <span className="text-verde">setores</span>
           </h2>
 
-          <p className="text-gray-600 text-lg leading-relaxed max-w-2xl">
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-2xl">
             Conheça todas as soluções que oferecemos para você e sua empresa.
             Clique sobre os cards para descobrir mais sobre nossos núcleos e
             serviços oferecidos.
           </p>
         </div>
 
-        {/* Como agora são 5 itens, os 2 últimos vão quebrar para a linha de baixo naturalmente */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 md:gap-8 items-stretch">
           {areas.map((area, index) => (
             <a
               key={area.id}
               href={area.link}
-              // 2. Adicione md:col-span-2 em todos, e md:col-start-2 apenas no quarto item (index 3)
-              className={`group relative flex flex-col w-full aspect-square
-                                  md:col-span-2 ${index === 3 ? "md:col-start-2" : ""}
-                                  transition-all duration-700 ease-out
-                                  ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+              className={`group relative flex flex-col w-full h-full 
+                          lg:col-span-2 ${index === 3 ? "lg:col-start-2" : ""}
+                          transition-all duration-700 ease-out
+                          ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{
                 transitionDelay: visible ? `${200 + index * 150}ms` : "0ms",
               }}
@@ -130,40 +128,32 @@ function AreasAtuacao() {
               />
 
               <div className="relative flex flex-col flex-1 p-0.5">
-                <span
-                  className={`absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 ${area.borderColor}`}
-                />
-                <span
-                  className={`absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 ${area.borderColor}`}
-                />
-                <span
-                  className={`absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 ${area.borderColor}`}
-                />
-                <span
-                  className={`absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 ${area.borderColor}`}
-                />
+                <span className={`absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 ${area.borderColor}`} />
+                <span className={`absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 ${area.borderColor}`} />
+                <span className={`absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 ${area.borderColor}`} />
+                <span className={`absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 ${area.borderColor}`} />
 
                 <div
                   className={`relative z-10 flex flex-col flex-1 bg-off-white border border-roxo-escuro/15 ${area.hoverBorderColor}
                               shadow-[0_25px_50px_-20px_rgba(46,26,71,0.35)] hover:shadow-[0_35px_60px_-15px_rgba(46,26,71,0.5)]
-                              overflow-hidden transition-all duration-500 ease-out hover:-translate-y-2 p-6 `}
+                              overflow-hidden transition-all duration-500 ease-out hover:-translate-y-2 p-5 md:p-6 `}
                   style={{
                     transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
                   }}
                 >
-                  <div className="mb-4">
+                  <div className="mb-3 md:mb-4">
                     <area.icone
-                      size={36}
-                      className={`${area.iconColor} transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6`}
+                      size={32}
+                      className={`${area.iconColor} md:w-9 md:h-9 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6`}
                     />
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
                     {area.titulo}
                   </h3>
 
                   <p
-                    className="text-gray-700 leading-relaxed text-sm grow"
+                    className="text-gray-700 leading-relaxed text-sm grow mb-4"
                     style={{
                       display: "-webkit-box",
                       WebkitLineClamp: 3,
@@ -174,9 +164,9 @@ function AreasAtuacao() {
                     {area.descricao}
                   </p>
 
-                  <div className="mt-4">
+                  <div className="mt-auto">
                     <span
-                      className={`${area.bgColor} text-white px-4 py-2 rounded-md text-sm font-semibold transition-transform duration-300 inline-block group-hover:scale-105`}
+                      className={`${area.bgColor} text-white px-4 py-2 rounded-md text-xs md:text-sm font-semibold transition-transform duration-300 inline-block group-hover:scale-105`}
                     >
                       Veja mais
                     </span>

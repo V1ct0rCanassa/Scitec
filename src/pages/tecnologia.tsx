@@ -58,8 +58,8 @@ export function TecnologiaESoftware() {
   ];
 
   return (
-    <main className="font-texto bg-off-white min-h-screen pt-32 pb-24 selection:bg-verde/30">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+    <main className="font-texto bg-off-white min-h-screen pt-32 pb-24 selection:bg-verde/30 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 w-full">
         {/* HERO SECTION */}
         <header
           className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center transition-all duration-1000 ease-out mb-32

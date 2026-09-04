@@ -68,19 +68,19 @@ function Projetos() {
   }
 
   return (
-    <section ref={sectionRef} className="py-24 bg-off-white font-texto overflow-hidden" id="portfolio">
+    <section ref={sectionRef} className="py-10 md:py-24 bg-off-white font-texto overflow-hidden" id="portfolio">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
 
         {/* Cabeçalho */}
         <div
-          className={`flex flex-col items-center text-center mb-16
+          className={`flex flex-col items-center text-center mb-8 md:mb-16
                       transition-all duration-700 ease-out
                       ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-roxo-escuro mb-6 leading-tight">
+          <h2 className="text-3xl md:text-5xl font-bold text-roxo-escuro mb-3 md:mb-6 leading-tight">
             Nossos <span className="text-verde">Projetos</span>
           </h2>
-          <p className="text-gray-600 text-lg leading-relaxed max-w-2xl">
+          <p className="text-gray-600 text-sm md:text-lg leading-relaxed max-w-2xl">
             Conheça algumas das soluções técnicas e produtos digitais que já desenvolvemos.
           </p>
         </div>
@@ -91,27 +91,26 @@ function Projetos() {
                       ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
         >
 
-          {/* Botões de Navegação nas Laterais */}
-          {/* Botão Voltar (Roxo -> Verde com transição suave) */}
+          {/* --- BOTÕES DE NAVEGAÇÃO DESKTOP (Laterais) - Aparecem só no lg pra cima --- */}
           <button
             onClick={prevProject}
-            className="absolute -left-2 md:-left-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center bg-roxo-escuro text-white hover:bg-verde rounded-md shadow-lg transition-colors duration-500 ease-in-out"
+            className="hidden lg:flex absolute -left-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 items-center justify-center bg-roxo-escuro text-white hover:bg-verde rounded-md shadow-lg transition-colors duration-500 ease-in-out"
             aria-label="Projeto anterior"
           >
             <ChevronLeft size={24} strokeWidth={2.5} />
           </button>
 
-          {/* Botão Avançar (Verde -> Roxo com transição suave) */}
           <button
             onClick={nextProject}
-            className="absolute -right-2 md:-right-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 flex items-center justify-center bg-verde text-white hover:bg-roxo-escuro rounded-md shadow-lg transition-colors duration-500 ease-in-out"
+            className="hidden lg:flex absolute -right-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 items-center justify-center bg-verde text-white hover:bg-roxo-escuro rounded-md shadow-lg transition-colors duration-500 ease-in-out"
             aria-label="Próximo projeto"
           >
             <ChevronRight size={24} strokeWidth={2.5} />
           </button>
 
-          {/* Wrapper que segura a altura dos cards */}
-          <div className="relative w-full h-160 md:h-128">
+          {/* --- WRAPPER QUE SEGURA A ALTURA DOS CARDS --- */}
+          {/* Altura adaptável: Mais alto em telas menores (para empilhar imagem e texto), e otimizado no PC (lg:) */}
+          <div className="relative w-full h-144 sm:h-152 md:h-160 lg:h-128">
 
             {projetos.map((projeto, index) => {
               const isCurrent = index === currentIndex
@@ -119,16 +118,12 @@ function Projetos() {
               return (
                 <div
                   key={projeto.id}
-                  className={`absolute inset-0 transition-all duration-700 ease-in-out group p-1 md:p-2 flex
+                  className={`absolute inset-0 transition-all duration-700 ease-in-out group p-1.5 md:p-2 flex
                     ${isCurrent ? 'opacity-100 z-20 translate-y-0 scale-100' : 'opacity-0 z-0 translate-y-8 scale-95 pointer-events-none'}
                   `}
                 >
 
-                  {/* Fundo Pontilhado */}
-                  <div
-                    aria-hidden="true"
-                    className={`absolute inset-0 -z-10 opacity-[0.15] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[16px_16px] ${projeto.iconColor}`}
-                  />
+                  <div aria-hidden="true" className={`absolute inset-0 -z-10 opacity-[0.15] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[16px_16px] ${projeto.iconColor}`} />
 
                   {/* Elementos Quadrados dos Cantos */}
                   <span className={`absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 ${projeto.borderColor}`} />
@@ -137,37 +132,41 @@ function Projetos() {
                   <span className={`absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 ${projeto.borderColor}`} />
 
                   {/* Container do Card Principal */}
+                  {/* Mudamos de md:flex-row para lg:flex-row. Abaixo de lg (celular e tablet), ele empilha (flex-col) */}
                   <div
-                    className={`relative z-10 flex flex-col md:flex-row w-full h-full bg-off-white border border-roxo-escuro/15 ${projeto.hoverBorderColor}
-                                shadow-[0_25px_50px_-20px_rgba(46,26,71,0.35)] group-hover:shadow-[0_35px_60px_-15px_rgba(46,26,71,0.5)]
+                    className={`relative z-10 flex flex-col lg:flex-row w-full h-full bg-off-white border border-roxo-escuro/15 ${projeto.hoverBorderColor}
+                                shadow-lg md:shadow-[0_25px_50px_-20px_rgba(46,26,71,0.35)] lg:group-hover:shadow-[0_35px_60px_-15px_rgba(46,26,71,0.5)]
                                 overflow-hidden transition-all duration-500 ease-out`}
                   >
 
                     {/* Metade ESQUERDA: Imagem */}
-                    <div className="w-full md:w-1/2 h-56 md:h-full bg-gray-200 flex flex-col items-center justify-center relative shrink-0 border-b md:border-b-0 md:border-r border-roxo-escuro/5">
-                      <ImageIcon size={64} className={`${projeto.iconColor} mb-4 opacity-40 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3`} />
-                      <span className="text-gray-500 font-medium">Espaço para Imagem</span>
+                    {/* Altura proporcional em telas menores e largura de metade no PC (lg:w-1/2) */}
+                    <div className="w-full lg:w-1/2 h-44 sm:h-48 md:h-52 lg:h-full bg-gray-200 flex flex-col items-center justify-center relative shrink-0 border-b lg:border-b-0 lg:border-r border-roxo-escuro/5">
+                      <ImageIcon size={40} className={`${projeto.iconColor} mb-2 md:mb-4 opacity-40 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 md:w-16 md:h-16`} />
+                      <span className="text-gray-500 text-sm md:text-base font-medium">Espaço para Imagem</span>
                     </div>
 
                     {/* Metade DIREITA: Textos e Informações */}
-                    <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-center">
-                      <div className="inline-flex mb-4">
-                        <span className={`${projeto.bgColor} text-white px-3 py-1 text-xs font-bold tracking-widest uppercase rounded`}>
-                          {projeto.categoria}
-                        </span>
+                    <div className="w-full lg:w-1/2 p-5 sm:p-6 md:p-8 lg:p-12 flex flex-col h-full justify-between">
+                      <div>
+                        <div className="inline-flex mb-2 md:mb-3">
+                          <span className={`${projeto.bgColor} text-white px-2.5 py-1 text-[10px] md:text-xs font-bold tracking-widest uppercase rounded`}>
+                            {projeto.categoria}
+                          </span>
+                        </div>
+
+                        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2 md:mb-4">
+                          {projeto.titulo}
+                        </h3>
+
+                        <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed line-clamp-3 lg:line-clamp-none">
+                          {projeto.descricao}
+                        </p>
                       </div>
 
-                      <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                        {projeto.titulo}
-                      </h3>
-
-                      <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-8">
-                        {projeto.descricao}
-                      </p>
-
-                      <div className="mt-auto md:mt-0">
-                        <button className={`w-fit ${projeto.bgColor} text-white transition-all duration-300 px-8 py-3.5 rounded-md font-semibold text-sm group-hover:scale-[1.02] hover:shadow-lg flex items-center gap-2`}>
-                          Explorar Case de Sucesso
+                      <div className="mt-4 lg:mt-0">
+                        <button className={`w-full lg:w-fit justify-center ${projeto.bgColor} text-white transition-all duration-300 px-6 lg:px-8 py-2.5 lg:py-3.5 rounded-md font-semibold text-sm group-hover:scale-[1.02] hover:shadow-lg flex items-center gap-2`}>
+                          Explorar Case
                           <ChevronRight size={18} />
                         </button>
                       </div>
@@ -179,10 +178,29 @@ function Projetos() {
             })}
 
           </div>
+
+          {/* --- BOTÕES DE NAVEGAÇÃO TABLET / MOBILE (Embaixo) - Aparecem até lg --- */}
+          <div className="flex lg:hidden items-center justify-center gap-6 mt-6">
+            <button
+              onClick={prevProject}
+              className="w-12 h-12 flex items-center justify-center bg-roxo-escuro text-white active:bg-verde rounded-md shadow-md transition-colors"
+              aria-label="Projeto anterior"
+            >
+              <ChevronLeft size={24} strokeWidth={2.5} />
+            </button>
+            <button
+              onClick={nextProject}
+              className="w-12 h-12 flex items-center justify-center bg-verde text-white active:bg-roxo-escuro rounded-md shadow-md transition-colors"
+              aria-label="Próximo projeto"
+            >
+              <ChevronRight size={24} strokeWidth={2.5} />
+            </button>
+          </div>
+
         </div>
       </div>
     </section>
   )
 }
 
-export default Projetos
+export default Projetos 

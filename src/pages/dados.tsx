@@ -57,7 +57,7 @@ export function DadosEInteligencia() {
   ];
 
   return (
-    <main className="font-texto bg-off-white min-h-screen pt-32 pb-24 selection:bg-verde/30">
+    <main className="font-texto bg-off-white min-h-screen pt-32 pb-24 selection:bg-verde/30 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         {/* HERO SECTION */}
         <header

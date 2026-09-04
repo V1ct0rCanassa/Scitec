@@ -54,8 +54,31 @@ function Relatos() {
     }
   ]
 
+  // TRUQUE: Duplicamos a lista para criar o loop perfeito do carrossel
+  const carroselItens = [...relatos, ...relatos, ...relatos, ...relatos]
+
   return (
-    <section ref={sectionRef} className="relative py-24 bg-roxo-escuro font-texto overflow-hidden" id="relatos">
+    <section ref={sectionRef} className="relative py-16 md:py-24 bg-roxo-escuro font-texto overflow-hidden" id="relatos">
+
+      {/* Estilo embutido para a animação do carrossel */}
+      <style>
+        {`
+          @keyframes scroll-depoimentos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+          }
+          .animate-marquee-slow {
+            display: flex;
+            width: max-content;
+            animation: scroll-depoimentos 160s linear infinite;
+          }
+          /* Pausa a rolagem quando o mouse entra ou quando toca na tela */
+          .animate-marquee-slow:hover, 
+          .animate-marquee-slow:active {
+            animation-play-state: paused;
+          }
+        `}
+      </style>
 
       <div
         aria-hidden="true"
@@ -63,80 +86,91 @@ function Relatos() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
-
+        
         <div
-          className={`flex flex-col items-center text-center mb-16
+          className={`flex flex-col items-center text-center mb-10 md:mb-16
                       transition-all duration-700 ease-out
                       ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          {/* Fonte ajustada para mobile (text-3xl) e PC (text-5xl) */}
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
             Nossa história através dos <span className="text-verde">ex-membros</span>
           </h2>
-          <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
+          <p className="text-gray-300 text-sm md:text-lg leading-relaxed max-w-2xl">
             A Scitec é uma escola de talentos. Veja o impacto da experiência na empresa júnior na carreira de quem já passou por aqui.
           </p>
         </div>
+      </div>
 
-        {/* Layout 2x2 no Desktop (md:grid-cols-2) para os 4 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          {relatos.map((relato, index) => (
-            <div
-              key={relato.id}
-              className={`group relative flex flex-col w-full
-                          transition-all duration-700 ease-out
-                          ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-              style={{ transitionDelay: visible ? `${200 + index * 100}ms` : '0ms' }}
-            >
-
+      {/* Container do Carrossel de Depoimentos (Ocupa 100% da tela) */}
+      <div
+        className={`relative w-full mt-8 overflow-hidden transition-all duration-1000 delay-200 ease-out
+                    ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      >
+        <div className="relative w-full flex items-stretch">
+          
+          {/* Máscaras de Gradiente laterais para o efeito de "sumir" nas bordas */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 md:w-32 z-20 pointer-events-none bg-linear-to-r from-roxo-escuro to-transparent" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 md:w-32 z-20 pointer-events-none bg-linear-to-l from-roxo-escuro to-transparent" />
+          
+          {/* Trilho animado que contém os cards */}
+          <div className="animate-marquee-slow gap-6 md:gap-8 px-4 md:px-8 py-4 items-stretch">
+            {carroselItens.map((relato, index) => (
               <div
-                aria-hidden="true"
-                className="absolute inset-0 -z-10 opacity-[0.15] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[16px_16px] text-verde"
-              />
-
-              <div className="relative flex flex-col flex-1 p-0.5 mt-2">
-
-                <span className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-verde/90" />
-                <span className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-verde/90" />
-                <span className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-verde/90" />
-                <span className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-verde/90" />
-
+                key={`${relato.id}-${index}`}
+                // Largura travada: 85vw no celular (quase a tela toda) e 28rem no PC
+                className="group relative flex flex-col shrink-0 w-[85vw] sm:w-[24rem] md:w-md h-auto"
+              >
                 <div
-                  className="relative z-10 flex flex-col flex-1 bg-off-white border border-verde/20 group-hover:border-verde/60
-                             shadow-[0_25px_50px_-20px_rgba(0,0,0,0.5)] group-hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]
-                             overflow-hidden transition-all duration-500 ease-out group-hover:-translate-y-2 p-8"
-                  style={{ transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)' }}
-                >
+                  aria-hidden="true"
+                  className="absolute inset-0 -z-10 opacity-[0.15] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[16px_16px] text-verde"
+                />
 
-                  <Quote size={64} className="absolute top-6 right-6 text-roxo-escuro/5 -rotate-12 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6" />
+                <div className="relative flex flex-col h-full p-0.5 mt-2">
+                  <span className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-verde/90" />
+                  <span className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-verde/90" />
+                  <span className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-verde/90" />
+                  <span className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-verde/90" />
 
-                  <div className="relative z-10 mb-8 grow">
-                    <p className="text-gray-700 leading-relaxed italic">
-                      "{relato.texto}"
-                    </p>
-                  </div>
+                  {/* Card em si (h-full garante que todos tenham a mesma altura na linha) */}
+                  <div
+                    className="relative z-10 flex flex-col h-full bg-off-white border border-verde/20 group-hover:border-verde/60
+                               shadow-[0_15px_30px_-15px_rgba(0,0,0,0.5)] md:shadow-[0_25px_50px_-20px_rgba(0,0,0,0.5)] 
+                               group-hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]
+                               overflow-hidden transition-all duration-500 ease-out md:group-hover:-translate-y-2 p-6 md:p-8"
+                  >
+                    <Quote size={48} className="absolute top-4 right-4 md:top-6 md:right-6 md:w-16 md:h-16 text-roxo-escuro/5 -rotate-12 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6" />
 
-                  <div className="relative z-10 flex items-center gap-4 pt-6 border-t border-gray-200">
-                    <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center shrink-0 border border-verde/30">
-                      <User size={24} className="text-gray-400" />
+                    <div className="relative z-10 mb-6 md:mb-8 grow">
+                      {/* Fonte um pouco menor no celular para caber o texto todo (text-sm) */}
+                      <p className="text-gray-700 text-sm md:text-base leading-relaxed italic">
+                        "{relato.texto}"
+                      </p>
                     </div>
 
-                    <div className="flex flex-col">
-                      <h4 className="text-lg font-bold text-roxo-escuro leading-tight">
-                        {relato.nome}
-                      </h4>
-                      <span className="text-verde text-xs font-bold uppercase tracking-wide mt-1">
-                        {relato.cargo}
-                      </span>
-                      <span className="text-gray-500 text-xs mt-0.5">
-                        {relato.empresaAtual}
-                      </span>
-                    </div>
-                  </div>
+                    <div className="relative z-10 flex items-center gap-3 md:gap-4 pt-4 md:pt-6 border-t border-gray-200">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-200 flex items-center justify-center shrink-0 border border-verde/30">
+                        <User size={20} className="text-gray-400 md:w-6 md:h-6" />
+                      </div>
 
+                      <div className="flex flex-col">
+                        <h4 className="text-base md:text-lg font-bold text-roxo-escuro leading-tight">
+                          {relato.nome}
+                        </h4>
+                        <span className="text-verde text-[10px] md:text-xs font-bold uppercase tracking-wide mt-0.5 md:mt-1">
+                          {relato.cargo}
+                        </span>
+                        <span className="text-gray-500 text-[10px] md:text-xs mt-0.5">
+                          {relato.empresaAtual}
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
