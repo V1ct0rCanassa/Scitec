@@ -73,7 +73,7 @@ function AboutUs() {
 
               <div className="group w-full h-full border border-roxo-escuro/15 hover:border-verde/60 shadow-[0_25px_50px_-20px_rgba(46,26,71,0.35)] hover:shadow-[0_35px_60px_-15px_rgba(46,26,71,0.5)] overflow-hidden transition-all duration-300 ease-out hover:-translate-y-2">
                 <img
-                  src="/src/assets/about.jpeg"
+                  src="/public/assets/about.jpeg"
                   alt="Membros da empresa júnior SciTec reunidos"
                   className="w-full h-full object-cover"
                 />

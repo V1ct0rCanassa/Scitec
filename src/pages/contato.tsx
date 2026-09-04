@@ -38,12 +38,12 @@ function Contato() {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
-        (result) => {
+        (result: { text: unknown }) => {
           console.log(result.text)
           form.current?.reset()
           alert("Mensagem enviada com sucesso!")
         },
-        (error) => {
+        (error: { text: unknown }) => {
           console.log(error.text)
           alert("Erro ao enviar a mensagem. Tente novamente.")
         }
@@ -85,7 +85,7 @@ function Contato() {
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <img
-                  src="/src/assets/logo/pose1.png"
+                  src="/public/assets/logo/pose1.png"
                   alt="Mascote / Logo em pose de contato"
                   className="max-w-[80%] max-h-[80%] w-auto h-auto object-contain transition-transform duration-700 group-hover:scale-105"
                 />

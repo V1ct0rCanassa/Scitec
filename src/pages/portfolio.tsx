@@ -63,7 +63,7 @@ function Portfolio() {
       categoria: "Design e Concepção",
       descricao:
         "Reformulação completa da experiência do usuário e interface de um grande e-commerce, resultando em um aumento de 40% na taxa de conversão.",
-      imagem: "https://images.unsplash.com/photo-1507238692062-5a042e9e8e5c?q=80&w=800&auto=format&fit=crop",
+      imagem: "https://images.unsplash.com/photo-1658297063569-162817482fb6?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       tags: ["Figma", "UI/UX", "Design System"],
       accentColor: "text-verde",
       borderColor: "border-roxo-escuro/70",

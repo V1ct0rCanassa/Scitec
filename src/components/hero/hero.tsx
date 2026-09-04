@@ -107,7 +107,7 @@ function Hero() {
                            transform-[rotateY(0deg)] group-hover:transform-[rotateY(180deg)]"
               >
                 <img
-                  src="/src/assets/logo/pose1.png"
+                  src="/public/assets/logo/pose1.png"
                   alt="Pose 1"
                   className="max-w-[80%] max-h-[80%] w-auto h-auto object-contain"
                 />
@@ -120,7 +120,7 @@ function Hero() {
                            transform-[rotateY(-180deg)] group-hover:transform-[rotateY(0deg)]"
               >
                 <img
-                  src="/src/assets/logo/pose2.png"
+                  src="/public/assets/logo/pose2.png"
                   alt="Pose 2"
                   className="max-w-[80%] max-h-[80%] w-auto h-auto object-contain"
                 />

@@ -48,7 +48,7 @@ function Footer() {
               <span className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-roxo-escuro/80 transition-all duration-500 group-hover:w-full group-hover:h-full group-hover:border-roxo-escuro/30" />
               <span className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-roxo-escuro/80 transition-all duration-500 group-hover:w-full group-hover:h-full group-hover:border-roxo-escuro/30" />
               <img
-                src="/src/assets/logo/branco2.png"
+                src="/public/assets/logo/branco2.png"
                 alt="Marca SciTec"
                 className="h-8 md:h-10 w-auto relative z-10"
               />
