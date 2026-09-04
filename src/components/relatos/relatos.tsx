@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react'
+import { Quote, User, ArrowRight } from 'lucide-react'
 
-function Projetos() {
+function Relatos() {
   const sectionRef = useRef<HTMLElement>(null)
   const [visible, setVisible] = useState(false)
 
-  // Animação de entrada ao scrollar
   useEffect(() => {
     const node = sectionRef.current
     if (!node) return
@@ -24,189 +23,164 @@ function Projetos() {
     return () => observer.disconnect()
   }, [])
 
-  const projetos = [
+  const relatos = [
     {
-      id: 1, categoria: 'Web', titulo: 'Projeto Alpha',
-      iconColor: 'text-verde', bgColor: 'bg-verde',
-      borderColor: 'border-roxo-escuro/70', hoverBorderColor: 'group-hover:border-roxo-escuro/60',
-      descricao: 'Desenvolvemos uma plataforma web completa do zero, unindo alta performance no back-end e uma interface fluida no front-end para otimizar os processos internos do cliente.'
+      id: 1,
+      nome: 'Ana Souza',
+      cargo: 'Ex-membro | Desenvolvedora Full Stack',
+      empresaAtual: 'Atualmente na TechCorp',
+      texto: 'A Scitec foi o meu principal laboratório durante a faculdade. Lidar com clientes reais, prazos e a arquitetura de sistemas do zero me deu uma bagagem que nenhum projeto acadêmico conseguiria igualar.',
     },
     {
-      id: 2, categoria: 'Dados', titulo: 'Projeto Beta',
-      iconColor: 'text-roxo-escuro', bgColor: 'bg-roxo-escuro',
-      borderColor: 'border-verde/70', hoverBorderColor: 'group-hover:border-verde/60',
-      descricao: 'Estruturação de um pipeline de dados inteligente, transformando gigabytes de dados brutos em dashboards dinâmicos que apoiam a tomada de decisão em tempo real.'
+      id: 2,
+      nome: 'Carlos Mendes',
+      cargo: 'Ex-Diretor de Projetos | Cientista de Dados',
+      empresaAtual: 'Atualmente no DataBank',
+      texto: 'A vivência empresarial que tive na Scitec mudou minha carreira. Aprender a transformar dados complexos em valor real para o negócio me colocou anos à frente no mercado de trabalho logo após formado.',
     },
     {
-      id: 3, categoria: 'Sistemas', titulo: 'Projeto Gamma',
-      iconColor: 'text-verde', bgColor: 'bg-verde',
-      borderColor: 'border-roxo-escuro/70', hoverBorderColor: 'group-hover:border-roxo-escuro/60',
-      descricao: 'Criação de um sistema de gestão sob medida para resolver gargalos operacionais, integrando setores e automatizando tarefas manuais com segurança e escalabilidade.'
+      id: 3,
+      nome: 'Beatriz Lima',
+      cargo: 'Ex-membro | Engenheira de Software',
+      empresaAtual: 'Atualmente na Inovação.io',
+      texto: 'Muito além do código, a Scitec me ensinou sobre liderança, trabalho em equipe e metodologias ágeis. Foi a ponte perfeita entre a teoria da universidade e a exigência das grandes empresas de tecnologia.',
     },
     {
-      id: 4, categoria: 'Design', titulo: 'Projeto Delta',
-      iconColor: 'text-roxo-escuro', bgColor: 'bg-roxo-escuro',
-      borderColor: 'border-verde/70', hoverBorderColor: 'group-hover:border-verde/60',
-      descricao: 'Redesign completo da jornada do usuário em um aplicativo financeiro, aplicando metodologias de UX/UI para reduzir o abandono e aumentar o engajamento.'
-    },
-    {
-      id: 5, categoria: 'Mobile', titulo: 'Projeto Epsilon',
-      iconColor: 'text-verde', bgColor: 'bg-verde',
-      borderColor: 'border-roxo-escuro/70', hoverBorderColor: 'group-hover:border-roxo-escuro/60',
-      descricao: 'Aplicativo nativo construído com as melhores práticas de engenharia de software, garantindo funcionamento offline, rapidez e uma experiência nativa impecável.'
-    },
+      id: 4,
+      nome: 'Diego Costa',
+      cargo: 'Ex-Diretor de Mercado | Product Manager',
+      empresaAtual: 'Atualmente na FintechX',
+      texto: 'A autonomia que tivemos para planejar, errar e pivotar estratégias na Scitec foi fundamental. Aprendi a gerenciar produtos e pessoas com uma visão de negócios que aplico todos os dias no mercado corporativo.',
+    }
   ]
 
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  const nextProject = () => {
-    setCurrentIndex((prev) => (prev === projetos.length - 1 ? 0 : prev + 1))
-  }
-
-  const prevProject = () => {
-    setCurrentIndex((prev) => (prev === 0 ? projetos.length - 1 : prev - 1))
-  }
-
   return (
-    <section ref={sectionRef} className="py-10 md:py-24 bg-off-white font-texto overflow-hidden" id="portfolio">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+    <section ref={sectionRef} className="relative py-16 md:py-24 bg-roxo-escuro font-texto overflow-hidden" id="relatos">
 
-        {/* Cabeçalho */}
+      {/* Estilo para esconder a barra de rolagem nativa no celular */}
+      <style>
+        {`
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}
+      </style>
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 z-0 opacity-[0.05] text-white bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[24px_24px]"
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
+        
         <div
-          className={`flex flex-col items-center text-center mb-8 md:mb-16
+          className={`flex flex-col items-center text-center mb-6 md:mb-10
                       transition-all duration-700 ease-out
                       ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-roxo-escuro mb-3 md:mb-6 leading-tight">
-            Nossos <span className="text-verde">Projetos</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 md:mb-6 leading-tight">
+            Nossa história através dos <span className="text-verde">ex-membros</span>
           </h2>
-          <p className="text-gray-600 text-sm md:text-lg lg:text-xl leading-relaxed max-w-2xl">
-            Conheça algumas das soluções técnicas e produtos digitais que já desenvolvemos.
+          <p className="text-gray-300 text-sm md:text-lg leading-relaxed max-w-2xl">
+            A Scitec é uma escola de talentos. Veja o impacto da experiência na empresa júnior na carreira de quem já passou por aqui.
           </p>
         </div>
 
-        {/* Container Geral do Carrossel */}
-        {/* lg:max-w-6xl expande a largura no PC */}
-        <div
-          className={`relative w-full max-w-5xl lg:max-w-6xl mx-auto transition-all duration-700 ease-out delay-200
-                      ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+        {/* Indicador visual de "Deslize" (Aparece SÓ NO CELULAR/TABLET -> lg:hidden) */}
+        <div 
+          className={`flex lg:hidden justify-end transition-all duration-1000 delay-300
+                      ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
         >
+          <span className="flex items-center gap-2 text-verde/90 text-sm font-semibold animate-pulse mb-2 mr-2">
+            Deslize para ler <ArrowRight size={16} strokeWidth={2.5} />
+          </span>
+        </div>
 
-          {/* --- BOTÕES DE NAVEGAÇÃO DESKTOP (Laterais) - Aparecem só no lg pra cima --- */}
-          <button
-            onClick={prevProject}
-            className="hidden lg:flex absolute -left-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 lg:w-14 lg:h-14 items-center justify-center bg-roxo-escuro text-white hover:bg-verde rounded-md shadow-lg transition-colors duration-500 ease-in-out"
-            aria-label="Projeto anterior"
-          >
-            <ChevronLeft size={28} strokeWidth={2.5} />
-          </button>
+      </div>
 
-          <button
-            onClick={nextProject}
-            className="hidden lg:flex absolute -right-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 lg:w-14 lg:h-14 items-center justify-center bg-verde text-white hover:bg-roxo-escuro rounded-md shadow-lg transition-colors duration-500 ease-in-out"
-            aria-label="Próximo projeto"
-          >
-            <ChevronRight size={28} strokeWidth={2.5} />
-          </button>
-
-          {/* --- WRAPPER QUE SEGURA A ALTURA DOS CARDS --- */}
-          {/* Seus valores mobile mantidos! No lg, ele sobe para 42rem para ficar imponente no monitor */}
-          <div className="relative w-full h-144 sm:h-152 md:h-160 lg:h-168">
-
-            {projetos.map((projeto, index) => {
-              const isCurrent = index === currentIndex
-
-              return (
+      {/* Container Principal */}
+      <div
+        className={`relative w-full transition-all duration-1000 delay-200 ease-out
+                    ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      >
+        <div className="relative w-full lg:max-w-7xl lg:mx-auto">
+          
+          {/* Sombras laterais (Aparecem SÓ NO CELULAR para dar efeito de carrossel infinito) */}
+          <div className="lg:hidden absolute left-0 top-0 bottom-0 w-4 z-20 pointer-events-none bg-gradient-to-r from-roxo-escuro to-transparent" />
+          <div className="lg:hidden absolute right-0 top-0 bottom-0 w-16 z-20 pointer-events-none bg-gradient-to-l from-roxo-escuro to-transparent" />
+          
+          {/* MÁGICA RESPONSIVA AQUI:
+            Mobile: flex, overflow-x-auto (carrossel)
+            PC (lg): grid, grid-cols-2 (layout 2x2 estático)
+          */}
+          <div className="flex lg:grid lg:grid-cols-2 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none gap-6 md:gap-8 px-4 lg:px-8 py-4 items-stretch hide-scrollbar scroll-smooth w-full">
+            
+            {relatos.map((relato) => (
+              <div
+                key={relato.id}
+                // Mobile: largura fixa (85vw) e snap-center | PC (lg): largura 100% da coluna do grid
+                className="group relative flex flex-col shrink-0 lg:shrink w-[85vw] sm:w-[24rem] lg:w-full h-auto snap-center lg:snap-align-none"
+              >
                 <div
-                  key={projeto.id}
-                  className={`absolute inset-0 transition-all duration-700 ease-in-out group p-1.5 md:p-2 flex
-                    ${isCurrent ? 'opacity-100 z-20 translate-y-0 scale-100' : 'opacity-0 z-0 translate-y-8 scale-95 pointer-events-none'}
-                  `}
-                >
+                  aria-hidden="true"
+                  className="absolute inset-0 -z-10 opacity-[0.15] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[16px_16px] text-verde"
+                />
 
-                  <div aria-hidden="true" className={`absolute inset-0 -z-10 opacity-[0.15] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[16px_16px] ${projeto.iconColor}`} />
+                <div className="relative flex flex-col h-full p-0.5 mt-2">
+                  <span className="absolute -top-1 -left-1 w-8 h-8 border-t-2 border-l-2 border-verde/90" />
+                  <span className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-verde/90" />
+                  <span className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-verde/90" />
+                  <span className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-verde/90" />
 
-                  {/* SPANS DOS CANTOS: Adicionado lg:w-12 lg:h-12 para crescerem proporcionalmente no monitor */}
-                  <span className={`absolute -top-1 -left-1 w-8 h-8 lg:w-12 lg:h-12 border-t-2 border-l-2 ${projeto.borderColor}`} />
-                  <span className={`absolute -top-1 -right-1 w-8 h-8 lg:w-12 lg:h-12 border-t-2 border-r-2 ${projeto.borderColor}`} />
-                  <span className={`absolute -bottom-1 -left-1 w-8 h-8 lg:w-12 lg:h-12 border-b-2 border-l-2 ${projeto.borderColor}`} />
-                  <span className={`absolute -bottom-1 -right-1 w-8 h-8 lg:w-12 lg:h-12 border-b-2 border-r-2 ${projeto.borderColor}`} />
-
-                  {/* Container do Card Principal */}
+                  {/* Card em si */}
                   <div
-                    className={`relative z-10 flex flex-col lg:flex-row w-full h-full bg-off-white border border-roxo-escuro/15 ${projeto.hoverBorderColor}
-                                shadow-lg md:shadow-[0_25px_50px_-20px_rgba(46,26,71,0.35)] lg:group-hover:shadow-[0_35px_60px_-15px_rgba(46,26,71,0.5)]
-                                overflow-hidden transition-all duration-500 ease-out`}
+                    className="relative z-10 flex flex-col h-full bg-off-white border border-verde/20 group-hover:border-verde/60
+                               shadow-[0_15px_30px_-15px_rgba(0,0,0,0.5)] md:shadow-[0_25px_50px_-20px_rgba(0,0,0,0.5)] 
+                               group-hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]
+                               overflow-hidden transition-all duration-500 ease-out md:group-hover:-translate-y-2 p-6 md:p-8"
                   >
+                    <Quote size={48} className="absolute top-4 right-4 md:top-6 md:right-6 md:w-16 md:h-16 text-roxo-escuro/5 -rotate-12 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6" />
 
-                    {/* Metade ESQUERDA: Imagem */}
-                    {/* Suas alturas mobile mantidas. Imagem e ícone escalam só no lg: */}
-                    <div className="w-full lg:w-1/2 h-44 sm:h-48 md:h-52 lg:h-full bg-gray-200 flex flex-col items-center justify-center relative shrink-0 border-b lg:border-b-0 lg:border-r border-roxo-escuro/5">
-                      <ImageIcon size={40} className={`${projeto.iconColor} mb-2 md:mb-4 opacity-40 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 md:w-16 md:h-16 lg:w-24 lg:h-24`} />
-                      <span className="text-gray-500 text-sm md:text-base lg:text-lg font-medium">Espaço para Imagem</span>
+                    <div className="relative z-10 mb-6 md:mb-8 grow">
+                      <p className="text-gray-700 text-sm md:text-base leading-relaxed italic">
+                        "{relato.texto}"
+                      </p>
                     </div>
 
-                    {/* Metade DIREITA: Textos e Informações */}
-                    {/* lg:p-16 garante que o texto respire no card gigante do PC */}
-                    <div className="w-full lg:w-1/2 p-4 sm:p-6 md:p-12 lg:p-16 flex flex-col h-full justify-between lg:justify-center">
-                      <div>
-                        <div className="inline-flex mb-2 md:mb-4 lg:mb-6">
-                          {/* SPAN DA CATEGORIA: Adaptado para ficar maior e mais visível no PC (lg:text-sm lg:px-4 lg:py-1.5) */}
-                          <span className={`${projeto.bgColor} text-white px-2 md:px-3 lg:px-4 py-1 lg:py-1.5 text-[10px] md:text-xs lg:text-sm font-bold tracking-widest uppercase rounded`}>
-                            {projeto.categoria}
-                          </span>
-                        </div>
-
-                        {/* Título adaptado para lg:text-5xl */}
-                        <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 md:mb-6 lg:mb-8">
-                          {projeto.titulo}
-                        </h3>
-
-                        {/* Texto adaptado para lg:text-xl */}
-                        <p className="text-gray-600 text-sm md:text-lg lg:text-xl leading-relaxed mb-4 md:mb-8 line-clamp-4 lg:line-clamp-none">
-                          {projeto.descricao}
-                        </p>
+                    <div className="relative z-10 flex items-center gap-3 md:gap-4 pt-4 md:pt-6 border-t border-gray-200">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-200 flex items-center justify-center shrink-0 border border-verde/30">
+                        <User size={20} className="text-gray-400 md:w-6 md:h-6" />
                       </div>
 
-                      <div className="mt-auto lg:mt-8">
-                        {/* Botão cresce em padding e fonte apenas no lg */}
-                        <button className={`w-full lg:w-fit justify-center ${projeto.bgColor} text-white transition-all duration-300 px-6 md:px-8 lg:px-10 py-2.5 md:py-3.5 lg:py-4 rounded-md font-semibold text-sm lg:text-base group-hover:scale-[1.02] hover:shadow-lg flex items-center gap-2`}>
-                          Explorar Case
-                          <ChevronRight size={18} />
-                        </button>
+                      <div className="flex flex-col">
+                        <h4 className="text-base md:text-lg font-bold text-roxo-escuro leading-tight">
+                          {relato.nome}
+                        </h4>
+                        <span className="text-verde text-[10px] md:text-xs font-bold uppercase tracking-wide mt-0.5 md:mt-1">
+                          {relato.cargo}
+                        </span>
+                        <span className="text-gray-500 text-[10px] md:text-xs mt-0.5">
+                          {relato.empresaAtual}
+                        </span>
                       </div>
                     </div>
 
                   </div>
                 </div>
-              )
-            })}
-
+              </div>
+            ))}
+            
+            {/* Espaçador invisível no final (Aparece SÓ NO CELULAR) para a margem da direita não colar */}
+            <div className="lg:hidden shrink-0 w-4 sm:w-8" />
           </div>
-
-          {/* --- BOTÕES DE NAVEGAÇÃO MOBILE (Embaixo) --- */}
-          {/* Seus valores perfeitamente mantidos */}
-          <div className="flex lg:hidden items-center justify-center gap-6 mt-6">
-            <button
-              onClick={prevProject}
-              className="w-12 h-12 flex items-center justify-center bg-roxo-escuro text-white active:bg-verde rounded-md shadow-md transition-colors"
-              aria-label="Projeto anterior"
-            >
-              <ChevronLeft size={24} strokeWidth={2.5} />
-            </button>
-            <button
-              onClick={nextProject}
-              className="w-12 h-12 flex items-center justify-center bg-verde text-white active:bg-roxo-escuro rounded-md shadow-md transition-colors"
-              aria-label="Próximo projeto"
-            >
-              <ChevronRight size={24} strokeWidth={2.5} />
-            </button>
-          </div>
-
         </div>
       </div>
     </section>
   )
 }
 
-export default Projetos
+export default Relatos
