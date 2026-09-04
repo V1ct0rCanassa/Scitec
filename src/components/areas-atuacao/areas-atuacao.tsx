@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Cpu, Database, Lightbulb, PenTool, Microscope } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 function AreasAtuacao() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -111,9 +112,9 @@ function AreasAtuacao() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 md:gap-8 items-stretch">
           {areas.map((area, index) => (
-            <a
+            <Link
               key={area.id}
-              href={area.link}
+              to={area.link} 
               className={`group relative flex flex-col w-full h-full
                           lg:col-span-2 ${index === 3 ? "lg:col-start-2" : ""}
                           transition-all duration-700 ease-out
@@ -166,14 +167,14 @@ function AreasAtuacao() {
 
                   <div className="mt-auto">
                     <span
-                      className={`${area.bgColor} text-white px-4 py-2  text-xs md:text-sm font-semibold transition-transform duration-300 inline-block group-hover:scale-105`}
+                      className={`${area.bgColor} text-white px-4 py-2 rounded-md text-xs md:text-sm font-semibold transition-transform duration-300 inline-block group-hover:scale-105`}
                     >
                       Veja mais
                     </span>
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
