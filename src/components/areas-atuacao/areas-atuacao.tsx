@@ -126,7 +126,7 @@ function AreasAtuacao() {
             >
               <div
                 aria-hidden="true"
-                className={`absolute inset-0 -z-10 opacity-[0.15] [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:16px_16px] ${area.iconColor}`}
+                className={`absolute inset-0 -z-10 opacity-[0.15] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[16px_16px] ${area.iconColor}`}
               />
 
               <div className="relative flex flex-col flex-1 p-0.5">

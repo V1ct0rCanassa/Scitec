@@ -111,7 +111,7 @@ function Projetos() {
           </button>
 
           {/* Wrapper que segura a altura dos cards */}
-          <div className="relative w-full h-[40rem] md:h-[32rem]">
+          <div className="relative w-full h-160 md:h-128">
 
             {projetos.map((projeto, index) => {
               const isCurrent = index === currentIndex
@@ -127,7 +127,7 @@ function Projetos() {
                   {/* Fundo Pontilhado */}
                   <div
                     aria-hidden="true"
-                    className={`absolute inset-0 -z-10 opacity-[0.15] [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:16px_16px] ${projeto.iconColor}`}
+                    className={`absolute inset-0 -z-10 opacity-[0.15] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[16px_16px] ${projeto.iconColor}`}
                   />
 
                   {/* Elementos Quadrados dos Cantos */}

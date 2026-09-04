@@ -16,7 +16,7 @@ function Footer() {
       {/* Fundo Dotted em branco com baixa opacidade para textura */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-0 opacity-[0.15] text-white [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:24px_24px]"
+        className="absolute inset-0 z-0 opacity-[0.15] text-white bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[24px_24px]"
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
@@ -72,7 +72,7 @@ function Footer() {
                   className="group flex items-center gap-3 text-white/80 hover:text-roxo-escuro transition-colors duration-300 w-max text-sm font-semibold"
                 >
                   {/* Tracinho animado Roxo ao fazer hover */}
-                  <span className="w-0 h-[2px] bg-roxo-escuro transition-all duration-300 group-hover:w-4"></span>
+                  <span className="w-0 h-0.5 bg-roxo-escuro transition-all duration-300 group-hover:w-4"></span>
                   {link.nome}
                 </a>
               ))}

@@ -69,7 +69,7 @@ function Hero() {
 
         {/* Coluna direita — espaço reservado pra imagem */}
         <div
-          className={`relative flex items-center justify-center px-2 py-24 min-h-[380px] md:min-h-0 border-t md:border-t-0
+          className={`relative flex items-center justify-center px-2 py-24 min-h-95 md:min-h-0 border-t md:border-t-0
                      transition-all duration-1000 ease-out
                      ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
           style={{ transitionDelay: mounted ? '200ms' : '0ms' }}
@@ -88,7 +88,7 @@ function Hero() {
             />
 
             {/* Wrapper com Perspectiva 3D */}
-            <div className="absolute inset-6 group [perspective:1000px]">
+            <div className="absolute inset-6 group perspective-[1000px]">
 
               {/* Marcas de canto estáticas */}
               <span className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-verde/70 z-20 pointer-events-none" />
@@ -99,8 +99,8 @@ function Hero() {
               {/* Frente (Pose 1) - Começa em 0deg e vai para 180deg no hover */}
               <div
                 className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-in-out
-                           [backface-visibility:hidden] [-webkit-backface-visibility:hidden]
-                           [transform:rotateY(0deg)] group-hover:[transform:rotateY(180deg)]"
+                           backface-hidden [-webkit-backface-visibility:hidden]
+                           transform-[rotateY(0deg)] group-hover:transform-[rotateY(180deg)]"
               >
                 <img
                   src="/src/assets/logo/pose1.png"
@@ -112,8 +112,8 @@ function Hero() {
               {/* Verso (Pose 2) - Começa em -180deg e vem para 0deg no hover */}
               <div
                 className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-in-out
-                           [backface-visibility:hidden] [-webkit-backface-visibility:hidden]
-                           [transform:rotateY(-180deg)] group-hover:[transform:rotateY(0deg)]"
+                           backface-hidden [-webkit-backface-visibility:hidden]
+                           transform-[rotateY(-180deg)] group-hover:transform-[rotateY(0deg)]"
               >
                 <img
                   src="/src/assets/logo/pose2.png"

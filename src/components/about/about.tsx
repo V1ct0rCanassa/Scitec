@@ -51,7 +51,7 @@ function AboutUs() {
                      transition-all duration-700 ease-out
                      ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'}`}
         >
-          <div className="relative w-full max-w-2xl aspect-[3/2]">
+          <div className="relative w-full max-w-2xl aspect-3/2">
             {/* Fundo em grade de pontos, sutil, tema "circuito" */}
             <div
               aria-hidden="true"

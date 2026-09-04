@@ -88,11 +88,11 @@ export function TecnologiaESoftware() {
             </p>
           </div>
           {/* Imagem com estética do projeto */}
-          <div className="relative group w-full aspect-square md:aspect-[4/3] mt-8 lg:mt-0 cursor-pointer">
+          <div className="relative group w-full aspect-square md:aspect-4/3 mt-8 lg:mt-0 cursor-pointer">
             {/* Fundo pontilhado */}
             <div
               aria-hidden="true"
-              className="absolute -inset-6 -z-10 opacity-[0.15] [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:16px_16px] text-roxo-escuro transition-opacity duration-700 group-hover:opacity-30"
+              className="absolute -inset-6 -z-10 opacity-[0.15] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[16px_16px] text-roxo-escuro transition-opacity duration-700 group-hover:opacity-30"
             />
 
             <div className="relative h-full p-0.5">
@@ -116,11 +116,11 @@ export function TecnologiaESoftware() {
 
         {/* FOCO TÉCNICO */}
         <section
-          className={`relative bg-roxo-escuro w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] pt-20 pb-8 overflow-hidden transition-all duration-1000 delay-300 ${visible ? "opacity-100" : "opacity-0"}`}
+          className={`relative bg-roxo-escuro w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] pt-20 pb-8 overflow-hidden transition-all duration-1000 delay-300 ${visible ? "opacity-100" : "opacity-0"}`}
         >
           <div
             aria-hidden="true"
-            className="absolute inset-0 opacity-[0.05] [background-image:radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]"
+            className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#fff_1px,transparent_1px)] bg-size-[24px_24px]"
           />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
@@ -158,11 +158,11 @@ export function TecnologiaESoftware() {
 
         {/* METODOLOGIA E CULTURA */}
         <section
-          className={`relative bg-roxo-escuro w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] pb-20 mb-32 overflow-hidden transition-all duration-1000 delay-500 ${visible ? "opacity-100" : "opacity-0"}`}
+          className={`relative bg-roxo-escuro w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] pb-20 mb-32 overflow-hidden transition-all duration-1000 delay-500 ${visible ? "opacity-100" : "opacity-0"}`}
         >
           <div
             aria-hidden="true"
-            className="absolute inset-0 opacity-[0.05] [background-image:radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]"
+            className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#fff_1px,transparent_1px)] bg-size-[24px_24px]"
           />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">

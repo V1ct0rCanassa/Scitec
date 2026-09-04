@@ -59,7 +59,7 @@ function Relatos() {
 
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-0 opacity-[0.05] text-white [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:24px_24px]"
+        className="absolute inset-0 z-0 opacity-[0.05] text-white bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[24px_24px]"
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 lg:px-8">
@@ -90,7 +90,7 @@ function Relatos() {
 
               <div
                 aria-hidden="true"
-                className="absolute inset-0 -z-10 opacity-[0.15] [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:16px_16px] text-verde"
+                className="absolute inset-0 -z-10 opacity-[0.15] bg-[radial-gradient(currentColor_1px,transparent_1px)] bg-size-[16px_16px] text-verde"
               />
 
               <div className="relative flex flex-col flex-1 p-0.5 mt-2">
