@@ -31,8 +31,8 @@ function Footer() {
             </p>
           </div>
           <a
-            href="/#fale-conosco"
-            className="inline-flex w-full lg:w-auto justify-center items-center gap-2 mt-4 lg:mt-0 bg-roxo-escuro text-white px-6 py-2.5 md:py-3 font-bold rounded-sm hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(46,26,71,0.4)] transition-all duration-300"
+            href="/contato"
+            className="inline-flex w-full lg:w-auto justify-center items-center gap-2 mt-4 lg:mt-0 bg-roxo-escuro text-white px-6 py-2.5 md:py-3 font-bold  hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(46,26,71,0.4)] transition-all duration-300"
           >
             Fale com a gente
             <ArrowRight size={18} strokeWidth={2.5} />

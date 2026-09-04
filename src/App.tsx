@@ -9,6 +9,7 @@ import Dados from './pages/dados'
 import Design from './pages/design'
 import Ciencia from './pages/ciencia'
 import Portfolio from './pages/portfolio'
+import Contato from './pages/contato'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/design" element={<Design />} />
         <Route path="/ciencia" element={<Ciencia />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/contato" element={<Contato />} />
       </Routes>
 
       <Footer />

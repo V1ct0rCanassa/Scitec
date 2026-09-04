@@ -94,7 +94,7 @@ function Projetos() {
           {/* --- BOTÕES DE NAVEGAÇÃO DESKTOP (Laterais) --- */}
           <button
             onClick={prevProject}
-            className="hidden lg:flex absolute -left-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 items-center justify-center bg-roxo-escuro text-white hover:bg-verde rounded-md shadow-lg transition-colors duration-500 ease-in-out"
+            className="hidden lg:flex absolute -left-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 items-center justify-center bg-roxo-escuro text-white hover:bg-verde shadow-lg transition-colors duration-500 ease-in-out"
             aria-label="Projeto anterior"
           >
             <ChevronLeft size={24} strokeWidth={2.5} />
@@ -102,7 +102,7 @@ function Projetos() {
 
           <button
             onClick={nextProject}
-            className="hidden lg:flex absolute -right-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 items-center justify-center bg-verde text-white hover:bg-roxo-escuro rounded-md shadow-lg transition-colors duration-500 ease-in-out"
+            className="hidden lg:flex absolute -right-14 top-1/2 -translate-y-1/2 z-30 w-12 h-12 items-center justify-center bg-verde text-white hover:bg-roxo-escuro  shadow-lg transition-colors duration-500 ease-in-out"
             aria-label="Próximo projeto"
           >
             <ChevronRight size={24} strokeWidth={2.5} />
@@ -147,7 +147,7 @@ function Projetos() {
                     <div className="w-full lg:w-1/2 p-5 sm:p-6 md:p-8 lg:p-16 flex flex-col h-full justify-between">
                       <div>
                         <div className="inline-flex mb-2 md:mb-3 lg:mb-5">
-                          <span className={`${projeto.bgColor} text-white px-2.5 lg:px-4 py-1 lg:py-1.5 text-[10px] md:text-xs lg:text-sm font-bold tracking-widest uppercase rounded`}>
+                          <span className={`${projeto.bgColor} text-white px-2.5 lg:px-4 py-1 lg:py-1.5 text-[10px] md:text-xs lg:text-sm font-bold tracking-widest uppercase `}>
                             {projeto.categoria}
                           </span>
                         </div>
@@ -162,7 +162,7 @@ function Projetos() {
                       </div>
 
                       <div className="mt-4 lg:mt-0">
-                        <button className={`w-full lg:w-fit justify-center ${projeto.bgColor} text-white transition-all duration-300 px-6 lg:px-10 py-2.5 lg:py-4 rounded-md font-semibold text-sm lg:text-base group-hover:scale-[1.02] hover:shadow-lg flex items-center gap-2`}>
+                        <button className={`w-full lg:w-fit justify-center ${projeto.bgColor} text-white transition-all duration-300 px-6 lg:px-10 py-2.5 lg:py-4  font-semibold text-sm lg:text-base group-hover:scale-[1.02] hover:shadow-lg flex items-center gap-2`}>
                           Explorar Case
                           <ChevronRight size={18} />
                         </button>
@@ -180,14 +180,14 @@ function Projetos() {
           <div className="flex lg:hidden items-center justify-center gap-6 mt-6">
             <button
               onClick={prevProject}
-              className="w-12 h-12 flex items-center justify-center bg-roxo-escuro text-white active:bg-verde rounded-md shadow-md transition-colors"
+              className="w-12 h-12 flex items-center justify-center bg-roxo-escuro text-white active:bg-verde shadow-md transition-colors"
               aria-label="Projeto anterior"
             >
               <ChevronLeft size={24} strokeWidth={2.5} />
             </button>
             <button
               onClick={nextProject}
-              className="w-12 h-12 flex items-center justify-center bg-verde text-white active:bg-roxo-escuro rounded-md shadow-md transition-colors"
+              className="w-12 h-12 flex items-center justify-center bg-verde text-white active:bg-roxo-escuro shadow-md transition-colors"
               aria-label="Próximo projeto"
             >
               <ChevronRight size={24} strokeWidth={2.5} />

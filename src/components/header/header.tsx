@@ -6,9 +6,9 @@ function Header() {
   // ESTADOS DO DESKTOP (PC)
   const [isServicesOpen, setIsServicesOpen] = useState(false)
   const [isDropdownMounted, setIsDropdownMounted] = useState(false)
-  
+
   // ESTADOS DO MOBILE (CELULAR)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false) 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false) // <-- Novo estado independente!
 
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -49,7 +49,7 @@ function Header() {
   return (
     <header className="relative z-50 bg-roxo-escuro">
       <div className="max-w-7xl mx-auto px-4 w-full flex items-center justify-between">
-        
+
         {/* Logo */}
         <Link to="/" className="shrink-0" onClick={closeMobileMenu}>
           <img src="/src/assets/logo/branco2.png" alt="Marca" className="h-20 w-auto" />
@@ -60,8 +60,8 @@ function Header() {
           <Link to="/" className="text-off-white/80 hover:text-off-white transition-colors">Início</Link>
           <a href="/#quem-somos" className="text-off-white/80 hover:text-off-white transition-colors">Quem somos</a>
 
-          <div 
-            className="relative" 
+          <div
+            className="relative"
             ref={dropdownRef}
             onMouseEnter={() => {
               setIsDropdownMounted(true)
@@ -98,12 +98,12 @@ function Header() {
         </nav>
 
         {/* Botão Fale Conosco Desktop */}
-        <a href="/#fale-conosco" className="hidden md:inline-flex font-texto text-lg font-medium bg-verde text-off-white px-6 py-3 shadow-md hover:-translate-y-0.5 transition-all">
+        <Link to ="/contato" className="hidden md:inline-flex font-texto text-lg font-medium bg-verde text-off-white px-6 py-3 shadow-md hover:-translate-y-0.5 transition-all">
           Fale conosco
-        </a>
+        </Link>
 
         {/* --- BOTÃO HAMBÚRGUER (CELULAR) --- */}
-        <button 
+        <button
           className="md:hidden text-off-white p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -117,10 +117,10 @@ function Header() {
           <nav className="flex flex-col font-texto text-lg px-4 pt-2">
             <Link to="/" className="py-3 text-off-white border-b border-white/10" onClick={closeMobileMenu}>Início</Link>
             <a href="/#quem-somos" className="py-3 text-off-white border-b border-white/10" onClick={closeMobileMenu}>Quem somos</a>
-            
+
             {/* Acordeão de Setores (Mobile) */}
             <div className="py-3 border-b border-white/10">
-              <button 
+              <button
                 onClick={(e) => {
                   e.preventDefault(); // Evita comportamentos estranhos do navegador
                   setIsMobileServicesOpen(!isMobileServicesOpen); // Abre e fecha perfeitamente
@@ -130,14 +130,14 @@ function Header() {
                 <span>Setores</span>
                 <ChevronDown size={18} className={`transition-transform ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
               </button>
-              
+
               {isMobileServicesOpen && (
                 <div className="flex flex-col gap-5 mt-5 pl-4 border-l border-verde/50 ml-2">
                   {setores.map((setor) => (
-                    <Link 
-                      key={setor.nome} 
-                      to={setor.link} 
-                      onClick={closeMobileMenu} 
+                    <Link
+                      key={setor.nome}
+                      to={setor.link}
+                      onClick={closeMobileMenu}
                       className="flex items-center gap-3 text-off-white/80 active:text-verde"
                     >
                       <setor.Icone size={20} className="text-verde" />
@@ -149,7 +149,7 @@ function Header() {
             </div>
 
             <Link to="/portfolio" className="py-3 text-off-white border-b border-white/10" onClick={closeMobileMenu}>Portfólio</Link>
-            
+
             <a href="/#fale-conosco" onClick={closeMobileMenu} className="mt-6 text-center font-medium bg-verde text-off-white px-6 py-3">
               Fale conosco
             </a>

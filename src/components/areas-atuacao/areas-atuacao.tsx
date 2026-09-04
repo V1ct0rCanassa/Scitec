@@ -114,7 +114,7 @@ function AreasAtuacao() {
             <a
               key={area.id}
               href={area.link}
-              className={`group relative flex flex-col w-full h-full 
+              className={`group relative flex flex-col w-full h-full
                           lg:col-span-2 ${index === 3 ? "lg:col-start-2" : ""}
                           transition-all duration-700 ease-out
                           ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
@@ -166,7 +166,7 @@ function AreasAtuacao() {
 
                   <div className="mt-auto">
                     <span
-                      className={`${area.bgColor} text-white px-4 py-2 rounded-md text-xs md:text-sm font-semibold transition-transform duration-300 inline-block group-hover:scale-105`}
+                      className={`${area.bgColor} text-white px-4 py-2  text-xs md:text-sm font-semibold transition-transform duration-300 inline-block group-hover:scale-105`}
                     >
                       Veja mais
                     </span>
