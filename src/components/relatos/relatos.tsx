@@ -110,8 +110,8 @@ function Relatos() {
         <div className="relative w-full lg:max-w-7xl lg:mx-auto">
           
           {/* Sombras laterais (Aparecem SÓ NO CELULAR para dar efeito de carrossel infinito) */}
-          <div className="lg:hidden absolute left-0 top-0 bottom-0 w-4 z-20 pointer-events-none bg-gradient-to-r from-roxo-escuro to-transparent" />
-          <div className="lg:hidden absolute right-0 top-0 bottom-0 w-16 z-20 pointer-events-none bg-gradient-to-l from-roxo-escuro to-transparent" />
+          <div className="lg:hidden absolute left-0 top-0 bottom-0 w-4 z-20 pointer-events-none bg-linear-to-r from-roxo-escuro to-transparent" />
+          <div className="lg:hidden absolute right-0 top-0 bottom-0 w-16 z-20 pointer-events-none bg-linear-to-l from-roxo-escuro to-transparent" />
           
           {/* MÁGICA RESPONSIVA AQUI:
             Mobile: flex, overflow-x-auto (carrossel)

@@ -166,8 +166,9 @@ function AreasAtuacao() {
                   </p>
 
                   <div className="mt-auto">
+                    {/* CORREÇÃO: Removido o 'rounded-md' para deixar quadrado */}
                     <span
-                      className={`${area.bgColor} text-white px-4 py-2 rounded-md text-xs md:text-sm font-semibold transition-transform duration-300 inline-block group-hover:scale-105`}
+                      className={`${area.bgColor} text-white px-4 py-2 text-xs md:text-sm font-semibold transition-transform duration-300 inline-block group-hover:scale-105`}
                     >
                       Veja mais
                     </span>
