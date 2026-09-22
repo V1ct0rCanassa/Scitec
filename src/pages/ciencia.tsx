@@ -8,7 +8,6 @@ import {
   Search,
   MessageSquare,
   Target,
-  Users,
   CheckCircle,
   Puzzle,
   Briefcase,
